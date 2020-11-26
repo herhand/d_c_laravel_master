@@ -9,6 +9,11 @@ services:
       - 8080:80
     volumes:
       - ./:/var/www/html
+networks:
+  default:
+    external:
+      name: netqu
+
   # db:
   #   image: mysql:5.7
   #   restart: always
