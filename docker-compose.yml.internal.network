@@ -1,5 +1,11 @@
 version: '3.8'
 
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 10.20.0.0/24
+
 services: 
   app:
     build:
@@ -10,11 +16,9 @@ services:
       - 8081:80
     volumes:
       - ./:/var/www/html
-
-networks:
-  default:
-    external:
-      name: br0
+    networks:
+      frontend:
+        ipv4_address: 10.20.0.81
 
   # db:
   #   image: mysql:5.7
